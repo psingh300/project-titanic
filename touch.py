@@ -2,7 +2,7 @@ import time
 import pyupm_ttp223 as ttp223
 
 # Create the TTP223 touch sensor object using GPIO pin 0
-touch = ttp223.TTP223(0)
+touch = ttp223.TTP223(8)
 
 # Check whether or not a finger is near the touch sensor and
 # print accordingly, waiting one second between readings

@@ -31,8 +31,8 @@ myLcd.setCursor(0,0)
 #myLcd.setColor(53, 39, 249)
 
 # RGB Red
-myLcd.setColor(255, 0, 0)
+myLcd.setColor(233, 201, 223)
 
-myLcd.write('Hello World')
+myLcd.write('HI')
 myLcd.setCursor(1,2)
-myLcd.write('Hello World')
+myLcd.write('conor,your raiders are bad')
