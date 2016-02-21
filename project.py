@@ -18,18 +18,27 @@ def write_welcome():
     myLcd.setCursor(0,0)
     myLcd.setColor(233, 201, 223)
     myLcd.write("Welcome      ")
-
-def did_i_ask():
+def write_goodbye():
     myLcd.setCursor(0,0)
     myLcd.setColor(233, 201, 223)
-    myLcd.write("Did I ask")
+    myLcd.write("Goodbye         ")
 
 
 while True:
-    if button.value() == 0:
+    if button.value() == 1:
+        print ("debug ...... 1")
         write_welcome()
-    else:
-        show_temp()
-
-
-del button
+        print ("debug ...... 2")
+        time.sleep(4)
+        print ("debug ...... 3")
+        while True:
+            print ("debug ...... 4")
+            show_temp()
+            print ("debug ...... 5")
+            time.sleep(2)
+            print ("debug ......6 ")
+            if button.value() == 1:
+                print ("debug ...... 7")
+                write_goodbye()
+                print ("debug ...... 8")
+                exit()
