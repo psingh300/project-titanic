@@ -24,11 +24,13 @@ def show_temp():
 def write_welcome():
     myLcd.setCursor(0,0)
     myLcd.setColor(233, 201, 223)
-    myLcd.write("Welcome    ")
+    myLcd.write("Welcome       ")
+    myLcd.setCursor(1,0)
+    myLcd.write("                 ")
 def write_goodbye():
     myLcd.setCursor(0,0)
     myLcd.setColor(233, 201, 223)
-    myLcd.write("Goodbye      ")
+    myLcd.write("Goodbye          ")
 def write_dessert():
     myLcd.setCursor(0,0)
     myLcd.setColor(233, 201, 223)
@@ -42,7 +44,9 @@ def write_dessert():
 end_temp = 15
 
 while True:
+    print("SmartMat: Waiting for Button Press")
     if button.value() == 1:
+        print("SmartMat: Recording Temperature")
         write_welcome()
         time.sleep(2)
         while True:
@@ -53,4 +57,4 @@ while True:
                 exit()
             elif myTempIR.objectTemperature() < end_temp:
                 write_dessert()
-                exit()
+                break
