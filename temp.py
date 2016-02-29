@@ -15,4 +15,4 @@ for i in range(0, 10):
    time.sleep(1)
 
 # Delete the temperature sensor object
-del temp
+del temp3ssssx  
