@@ -52,9 +52,6 @@ while True:
         while True:
             show_temp()
             time.sleep(2)
-            if button.value() == 1:
-                write_goodbye()
-                exit()
-            elif myTempIR.objectTemperature() < end_temp:
+            if myTempIR.objectTemperature() < end_temp:
                 write_dessert()
                 break
