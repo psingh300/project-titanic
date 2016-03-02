@@ -11,27 +11,30 @@ button = grove.GroveButton(0)
 
 # all functions go here
 #LCD to I2C port (leftmost)
-# button goes to UART port
+# button  goes to UART port
 # IR temp sensor goes to A0
 #LED goes to D6
 
 def show_temp():
+    myLcd.clear()
     myLcd.setCursor(0,0)
     myLcd.setColor(233, 201, 223)
     temp_str = str(myTempIR.objectTemperature())
     myLcd.write(temp_str[:5]+"         ")
-
 def write_welcome():
+    myLcd.clear()
     myLcd.setCursor(0,0)
     myLcd.setColor(233, 201, 223)
     myLcd.write("Welcome       ")
     myLcd.setCursor(1,0)
     myLcd.write("                 ")
 def write_goodbye():
+    myLcd.clear()
     myLcd.setCursor(0,0)
     myLcd.setColor(233, 201, 223)
     myLcd.write("Goodbye          ")
 def write_dessert():
+    myLcd.clear()
     myLcd.setCursor(0,0)
     myLcd.setColor(233, 201, 223)
     myLcd.write("Would you like             ")
@@ -41,17 +44,24 @@ def write_dessert():
 # Program  is starting from here
 #starting_temp = myTempIR.objectTemperature()
 #dessert_temp = starting_temp - 4
-end_temp = 15
+end_temp = 30
 
 while True:
-    print("SmartMat: Waiting for Button Press")
-    if button.value() == 1:
-        print("SmartMat: Recording Temperature")
-        write_welcome()
-        time.sleep(2)
-        while True:
-            show_temp()
+    try:
+        print("SmartMat: Waiting for Button Press")
+        if button.value() == 1:
+            print("SmartMat: Recording Temperature")
+            time.sleep(1)
+            write_welcome()
             time.sleep(2)
-            if myTempIR.objectTemperature() < end_temp:
-                write_dessert()
-                break
+            while True:
+                time.sleep(1)
+                show_temp()
+                time.sleep(2)
+                if myTempIR.objectTemperature() < end_temp:
+                    time.sleep(1)
+                    write_dessert()
+                    break
+    except KeyboardInterrupt:
+        print("Bye")
+        sys.exit()
