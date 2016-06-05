@@ -3,6 +3,7 @@ import time
 import pyupm_grove as grove
 import sys, signal, atexit
 import pyupm_otp538u as upmOtp538u
+
 # ALL VARIABLES BELONG HERE
 myLcd = lcd.Jhd1313m1(0, 0x3E, 0x62)
 OTP538U_AREF = 5.0
@@ -48,20 +49,17 @@ end_temp = 30
 
 while True:
     try:
-        print("SmartMat: Waiting for Button Press")
+#        print("SmartMat: Waiting for Button Press")
         if button.value() == 1:
-            print("SmartMat: Recording Temperature")
-            time.sleep(1)
+#            print("SmartMat: Recording Temperature")
             write_welcome()
             time.sleep(2)
             while True:
-                time.sleep(1)
                 show_temp()
                 time.sleep(2)
                 if myTempIR.objectTemperature() < end_temp:
-                    time.sleep(1)
                     write_dessert()
                     break
     except KeyboardInterrupt:
-        print("Bye")
+#        print("Bye")
         sys.exit()
